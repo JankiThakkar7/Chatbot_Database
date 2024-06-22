@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chatbot {
+    position: fixed;
+    right: 40px;
+    bottom: 120px;
+    width: 420px;
+    overflow: hidden;
+    transform: scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+    background-color: #fff;
+    border-radius: 15px;
+    transform-origin: bottom right;
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+                0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.show_chatbot .chatbot {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.chatbot header {
+    background: #840c0c;
+    padding: 16px 0;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.chatbot header h2 {
+    font-size: 1.4rem;
+}
+
+.chatbox {
+    height: 420px;
+    overflow-y: auto;
+    padding: 30px 20px 100px;
+}
+
+.chatbox .chat {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.chatbox .icon {
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    margin-right: 10px;
+    background: white url('/static/images/ongc_logo.png') center center/cover no-repeat;
+}
+
+.chatbox .chat-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.chatbox .chat-content p {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    background: #f2f2f2;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.chat-options {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    background: #f2f2f2;
+    margin-bottom: 5px;
+    max-width: 75%;
+    word-wrap: break-word;
+    /* white-space: pre-wrap; */
+}
+
+.chat-options .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chat-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+.chat-options label {
+    cursor: pointer;
+}
+
+.outgoing {
+    justify-content: flex-end;
+    margin: 20px 0;
+    color: white;
+}
+
+.outgoing p {
+    background-color: #840c0c;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    max-width: 75%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.incoming p {
+    background-color: #f2f2f2;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    max-width: 75%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.chat_input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    background: #fff;
+    padding: 5px 20px;
+    border-top: 1px solid #ccc;
+}
+
+.chat_input textarea {
+    height: 55px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    resize: none;
+    padding: 16px 15px 16px 0;
+    max-height: 180px;
+}
+
+.chat_input span {
+    font-size: 1.35rem;
+    cursor: pointer;
+    align-self: flex-end;
+    line-height: 55px;
+    height: 55px;
+    visibility: hidden;
+}
+
+.chat_input textarea:valid ~ span {
+    visibility: visible;
+}
+
+.chatbot_toggler {
+    position: fixed;
+    right: 40px;
+    bottom: 35px;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: white url('/static/images/ongc_logo.png') center center/cover no-repeat;
+    animation: pulse 1.5s infinite, bounce 1.5s infinite;
+    transition: all 0.2s ease;
+}
+
+.chat p.error {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.show_chatbot .chatbot_toggler {
+    transform: rotate(90deg);
+    background: rgb(132, 12, 12);
+    background-image: none;
+}
+
+.chatbot_toggler span {
+    position: absolute;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.chatbot_toggler span:first-child {
+    opacity: 1;
+}
+
+.show_chatbot .chatbot_toggler span:first-child {
+    opacity: 0;
+}
+
+.chatbot_toggler span:last-child {
+    opacity: 0;
+}
+
+.show_chatbot .chatbot_toggler span:last-child {
+    opacity: 1;
+}
+
+.show_chatbot .chatbot_toggler {
+    animation: none;
+}
+
+.chatbox {
+    font-family: cursive;
+    font-size: large;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(132, 12, 12, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(132, 12, 12, 0.9);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        transition: all 1s ease;
+    }
+    50% {
+        transform: translateY(-10px);
+        transition: all 80s ease;
+    }
+}
+
+.chatbot header span {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    cursor: pointer;
+    display: none;
+    transform: translateY(-50%);
+}
+
+@media(max-width: 450px) {
+    .chatbot {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .chatbox {
+        height: 90%;
+    }
+
+    .chatbot header span {
+        display: block;
+    }
+}

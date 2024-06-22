@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/style.css') }}" />
+    <title>ChatBot</title>
+    <script src="{{ url_for('static' , filename='js/script.js') }}" defer></script>
+    <script type="text/javascript">
+        const SCRIPT_ROOT = "";
+        console.log(SCRIPT_ROOT);
+    </script>
+</head>
+
+<body>
+    <button class="chatbot_toggler">
+        <span class="chatbot_icon"></span>
+        <span class="close_icon">&#10006;</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>ChatBot &#129302;</h2>
+            <span class="close_btn">&#10006;</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="icon"></span>
+                <div class="chat-content">
+                    <p>Hi there 👋 How can I help you today?</p>
+                    <div class="chat-options">
+                        <div class="option">
+                            <input type="radio" value="Linux_Basic_Commands" name="r1" id="lbc" checked />
+                            <label for="lbc">Linux_Basic_Commands</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" value="CGG_Application" name="r1" id="ca" />
+                            <label for="ca">CGG_Application</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" value="Paradigm_Application" name="r1" id="pa" />
+                            <label for="pa">Paradigm_Application</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" value="Geotomo_Application" name="r1" id="ga" />
+                            <label for="ga">Geotomo_Application</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" value="HRS_Application" name="r1" id="ha" />
+                            <label for="ha">HRS_Application</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" value="Other" name="r1" id="o" />
+                            <label for="o">Other</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="chat_input">
+            <textarea placeholder="Message Here..." required spellcheck="true"></textarea>
+            <span id="send_btn">&#10148;</span>
+        </div>
+    </div>
+</body>
+
+</html>
