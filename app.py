@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.get("/")
 def main_page():
-    return render_template('/index.html')
+    return render_template('index.html')
 
 @app.post("/predict")
 def predict():

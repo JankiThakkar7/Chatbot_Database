@@ -4,7 +4,7 @@ from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
 
 # Load model parameters from file
-MODEL_FILE = "data1.pth"
+MODEL_FILE = "data.pth"
 model_data = torch.load(MODEL_FILE)
 
 input_size = model_data["input_size"]
@@ -37,7 +37,7 @@ def get_response(msg):
     prob = probs[0][predicted.item()]
 
     if prob.item() > 0.75:
-        return f"{random.choice(responses_dict[tag])} (Probability: {prob.item():.2f})"
+        return f"{random.choice(responses_dict[tag])}"
     return "I do not understand... (Probability: Low)"
 
 if __name__ == "__main__":

@@ -35,20 +35,14 @@ def preprocess_data(data):
         if tag not in tags:
             tags.append(tag)
         pattern = record['pattern']
-        # print(f"Pattern before tokenizing: {pattern}")  # Debugging statement
         w = tokenize(pattern)
-        # print(f"Tokenized pattern: {w}")  # Debugging statement
         all_words.extend(w)
         xy.append((w, tag))
 
     ignore_words = ['?', '!', '.', ',', '--', '-', '(', ')', '/', '`']
     all_words = [stem(w) for w in all_words if w not in ignore_words and w not in stop_words]
-    # print(f"Stemmed words: {all_words}")  # Debugging statement
     all_words = sorted(set(all_words))
     tags = sorted(set(tags))
-    
-    print("All_words after sorting and converting to set ***************************")
-    print(all_words)
     
     X = []
     y = []
@@ -58,8 +52,6 @@ def preprocess_data(data):
         X.append(bag)
         label = tags.index(tag)
         y.append(label)
-        
-    print("Length of bag_of_words : ",len(bag))
 
     X = np.array(X)
     y = np.array(y)
@@ -80,7 +72,7 @@ def main():
     hidden_size = 8
     output_size = len(tags)
     input_size = len(X[0])
-    learning_rate = 0.005
+    learning_rate = 0.001
     num_epochs = 500
 
     dataset = ChatDataset(X, y)
@@ -128,7 +120,7 @@ def main():
         "responses": responses_dict
     }
 
-    FILE = "data1.pth"
+    FILE = "data.pth"
     torch.save(model_data, FILE)
 
     print(f'Training complete. Model saved to {FILE}')
